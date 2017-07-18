@@ -1,5 +1,7 @@
 package rover.on.Mars
+
 import mars.on.rover.{Plateau, Rover}
+
 import scala.io.StdIn.readLine
 
 /**
@@ -12,8 +14,8 @@ object RoverControl extends App {
   val plateau_y = py.toInt
   Plateau.apply(plateau_x, plateau_y)
 
-  for (i <- 0 to 1) {
-    var Array(x, y, f) = readLine.split(" ")
+  for (_ <- 0 to 1) {
+    val Array(x, y, f) = readLine.split(" ")
     val rover_x = x.toInt
     val rover_y = y.toInt
     val rover_face = f
@@ -23,12 +25,12 @@ object RoverControl extends App {
 
     for (i <- str) {
       i match {
-        case 'M' => R.moveForward()
-        case 'R' => R.rightTurn()
-        case 'L' => R.leftTurn()
+        case 'M' => R.moveForward
+        case 'R' => R.rightTurn
+        case 'L' => R.leftTurn
         case _ => None
       }
     }
-    R.nowRover
+    R nowRover
   }
 }
