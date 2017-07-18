@@ -9,4 +9,3 @@ case class Plateau(px: Int, py: Int) {
   val plateauy: Int = py
 
 }
-

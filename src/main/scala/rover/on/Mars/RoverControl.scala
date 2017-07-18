@@ -1,48 +1,34 @@
 package rover.on.Mars
-
 import mars.on.rover.{Plateau, Rover}
+import scala.io.StdIn.readLine
 
 /**
   * Created by synerzip on 17/7/17.
   */
 object RoverControl extends App {
 
-  println("enter px")
-  val px = Console.readInt()
-  println("enter py")
-  val py = Console.readInt()
-  Plateau.apply(px, py)
+  val Array(px, py) = readLine.split(" ")
+  val plateau_x = px.toInt
+  val plateau_y = py.toInt
+  Plateau.apply(plateau_x, plateau_y)
 
-  println("enter x")
-  val tx = Console.readInt()
-  println("enter y")
-  val ty = Console.readInt()
+  for (i <- 0 to 1) {
+    var Array(x, y, f) = readLine.split(" ")
+    val rover_x = x.toInt
+    val rover_y = y.toInt
+    val rover_face = f
+    val R = new Rover(rover_x, rover_y, rover_face, plateau_x, plateau_y)
+    val driveString = readLine()
+    val str = driveString.toCharArray
 
-  println("enter f")
-  val tf = Console.readLine()
-
-  //  val R = new RoRoverver(tx,ty,tf)
-
-  val R = new Rover(tx, ty, tf, px, py)
-  println("Instructions ")
-  val driveString = readLine()
-  val str = driveString.toCharArray
-  for (i <- str) {
-    i match {
-      case 'M' => R.moveForward()
-        println(i)
-      case 'R' => R.rightTurn()
-        println(i)
-      case 'L' => R.leftTurn()
-        println(i)
-      case _ => None
+    for (i <- str) {
+      i match {
+        case 'M' => R.moveForward()
+        case 'R' => R.rightTurn()
+        case 'L' => R.leftTurn()
+        case _ => None
+      }
     }
+    R.nowRover
   }
-  R.now
-
-
-  /*R.rightTurn()
-
-  R.now
-*/
 }

@@ -4,85 +4,42 @@ package mars.on.rover
   * Created by synerzip on 17/7/17.
   */
 class Rover(x: Int, y: Int, var f: String, px: Int, py: Int) {
-  val plateaux = px
-  val plateauy = py
-  var lox = x
-  var lay = y
-  var rf = f
+  val plateau_x = px
+  val plateau_y = py
+  var rover_x = x
+  var rover_y = y
+  var rover_facing = f
 
-  def rightTurn(): Unit = rf match {
-    case "N" => rf = "E"
-      println("turn   " + lox, lay, rf, plateaux, plateauy)
-
-    case "E" => rf = "S"
-      println("turn   " + lox, lay, rf, plateaux, plateauy)
-
-    case "S" => rf = "W"
-      println("turn   " + lox, lay, rf, plateaux, plateauy)
-
-    case "W" => rf = "N"
-      println("turn   " + lox, lay, rf, plateaux, plateauy)
-
+  def rightTurn(): Unit = rover_facing match {
+    case "N" => rover_facing = "E"
+    case "E" => rover_facing = "S"
+    case "S" => rover_facing = "W"
+    case "W" => rover_facing = "N"
     case _ => None
   }
 
-  def leftTurn(): Unit = rf match {
-    case "N" => rf = "W"
-      println("turn   " + lox, lay, rf, plateaux, plateauy)
-
-    case "W" => rf = "S"
-      println("turn   " + lox, lay, rf, plateaux, plateauy)
-
-    case "S" => rf = "E"
-      println("turn   " + lox, lay, rf, plateaux, plateauy)
-
-    case "E" => rf = "N"
-      println("turn   " + lox, lay, rf, plateaux, plateauy)
-
+  def leftTurn(): Unit = rover_facing match {
+    case "N" => rover_facing = "W"
+    case "W" => rover_facing = "S"
+    case "S" => rover_facing = "E"
+    case "E" => rover_facing = "N"
     case _ => None
   }
 
-
-  def moveForward(): Unit = rf match {
+  def moveForward(): Unit = rover_facing match {
     case "N" =>
-      println("before     " + lox, lay, rf, plateaux, plateauy)
-
-      this.lay = if (lay <= plateauy) lay + 1 else lay
-//      lay = lay + 1
-//      lox = lox
-      println("after  >>  " + lox, lay, rf, plateaux, plateauy)
-
+      rover_y = if (rover_y <= plateau_y) rover_y + 1 else rover_y
     case "E" =>
-      println("before     " + lox, lay, rf, plateaux, plateauy)
-
-      this.lox = if (lox <= plateaux) lox + 1 else lox
-//      lox = lox + 1
-//      lay = lay
-      println("after  >>  " + lox, lay, rf, plateaux, plateauy)
-
+      rover_x = if (rover_x <= plateau_x) rover_x + 1 else rover_x
     case "S" =>
-      println("before     " + lox, lay, rf, plateaux, plateauy)
-
-      this.lay = if (lay >= 0) lay - 1 else lay
-//      lay = lay - 1
-//      lox = lox
-      println("after  >>  " + lox, lay, rf, plateaux, plateauy)
-
+      rover_y = if (rover_y >= 0) rover_y - 1 else rover_y
     case "W" =>
-      println("before     " + lox, lay, rf, plateaux, plateauy)
-
-      this.lox = if (lox >=  0) lox - 1 else lox
-//      lox = lox - 1
-//      lay = lay
-      println("after  >>  " + lox, lay, rf, plateaux, plateauy)
-
+      rover_x = if (rover_x >= 0) rover_x - 1 else rover_x
     case _ => None
   }
 
-  def now = {
-
-    println(lox + " " + lay + " " + rf)
-
+  def nowRover = {
+    println(rover_x + " " + rover_y + " " + rover_facing)
   }
 
 }
