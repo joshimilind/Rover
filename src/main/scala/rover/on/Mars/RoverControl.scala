@@ -25,9 +25,9 @@ object RoverControl extends App {
 
     for (i <- str) {
       i match {
-        case 'M' => R.moveForward
-        case 'R' => R.rightTurn
-        case 'L' => R.leftTurn
+        case 'M' => R moveForward
+        case 'R' => R rightTurn
+        case 'L' => R leftTurn
         case _ => None
       }
     }
