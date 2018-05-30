@@ -1,8 +1,5 @@
 package mars.on.rover
 
-/**
-  * Created by synerzip on 17/7/17.
-  */
 class Rover(x: Int, y: Int, var f: String, px: Int, py: Int) {
   val plateaux = px
   val plateauy = py
