@@ -2,9 +2,6 @@ package rover.on.Mars
 
 import mars.on.rover.{Plateau, Rover}
 
-/**
-  * Created by synerzip on 17/7/17.
-  */
 object RoverControl extends App {
 
   println("enter px")
